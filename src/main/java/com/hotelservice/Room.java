@@ -2,14 +2,16 @@ package com.hotelservice;
 
 import java.util.Objects;
 
-public class Room {
-    private static int numberOfRoom=0;
+public class Room implements Comparable<Room> {
+    private static int numbersOfRoom =0;
+    private int id;
     private int howManyPersons;
     private boolean toiletIncluded;
     private boolean isAvailable;
 
     public Room(int howManyPersons, boolean toiletIncluded, boolean isAvailable) {
-        numberOfRoom++;
+        numbersOfRoom++;
+        id=numbersOfRoom;
         this.howManyPersons = howManyPersons;
         this.toiletIncluded = toiletIncluded;
         this.isAvailable = isAvailable;
@@ -20,20 +22,39 @@ public class Room {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Room room = (Room) o;
-        return numberOfRoom == room.numberOfRoom && howManyPersons == room.howManyPersons && toiletIncluded == room.toiletIncluded && isAvailable == room.isAvailable;
+        return id == room.id && howManyPersons == room.howManyPersons && toiletIncluded == room.toiletIncluded && isAvailable == room.isAvailable;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(numberOfRoom, howManyPersons, toiletIncluded, isAvailable);
+        return Objects.hash(id, howManyPersons, toiletIncluded, isAvailable);
     }
 
     @Override
     public String toString() {
-        return "Room{" +
+        return "Room{" +"nr of room:"+ id +
                 "howManyPersons=" + howManyPersons +
                 ", toiletIncluded=" + toiletIncluded +
                 ", isAvailable=" + isAvailable +
-                '}';
+                "}\n";
+
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public boolean isAvailable() {
+        return isAvailable;
+    }
+
+    public void setAvailable(boolean available) {
+        isAvailable = available;
+    }
+
+
+    @Override
+    public int compareTo(Room room) {
+        return Integer.compare(this.getId(),room.getId());
     }
 }

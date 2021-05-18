@@ -1,17 +1,17 @@
 package com.hotelservice;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class Hotel {
-    Set<Room> rooms;
+    List<Room> rooms;
 
     public Hotel() {
         generateRooms();
     }
 
     private void generateRooms() {
-        rooms = new HashSet<>();
+        rooms = new ArrayList<>();
         for (int i = 0, j = 1; i < 50; i++, j++) {
             if (j == 6) {
                 j = 1;
@@ -24,7 +24,33 @@ public class Hotel {
         }
     }
 
-    public Set<Room> getRooms() {
+    public List<Room> getRooms() {
         return rooms;
+    }
+
+    public List<Room> getRoomsAvailable() {
+        return
+                rooms.stream()
+                        .filter(room -> room.isAvailable() == true)
+
+                        .collect(Collectors.toList());
+    }
+    public Room getRoomById(int id){
+//        Optional<Room> roomtemp=this.rooms.stream()
+//                .filter(room -> room.getId()==id)
+//                .findFirst();
+//        return roomtemp.orElse(null);
+
+
+        return this.rooms.get(id-1);
+
+    }
+
+    public void setRoomUnavailAble(int nrOfRoom) {
+        this.rooms.get(nrOfRoom-1).setAvailable(false);
+    }
+
+    public void setRoomAvailAble(int nrOfRoom) {
+        this.rooms.get(nrOfRoom-1).setAvailable(true);
     }
 }
