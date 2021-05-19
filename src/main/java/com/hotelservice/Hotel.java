@@ -4,7 +4,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class Hotel {
-    List<Room> rooms;
+    private List<Room> rooms;
 
     public Hotel() {
         generateRooms();
@@ -32,25 +32,23 @@ public class Hotel {
         return
                 rooms.stream()
                         .filter(room -> room.isAvailable() == true)
-
                         .collect(Collectors.toList());
     }
-    public Room getRoomById(int id){
-//        Optional<Room> roomtemp=this.rooms.stream()
-//                .filter(room -> room.getId()==id)
-//                .findFirst();
-//        return roomtemp.orElse(null);
 
-
-        return this.rooms.get(id-1);
+    public Room getRoomById(int id) {
+        return this.rooms.get(id - 1);
 
     }
 
     public void setRoomUnavailAble(int nrOfRoom) {
-        this.rooms.get(nrOfRoom-1).setAvailable(false);
+        this.rooms.get(nrOfRoom - 1).setAvailable(false);
     }
 
     public void setRoomAvailAble(int nrOfRoom) {
-        this.rooms.get(nrOfRoom-1).setAvailable(true);
+        this.rooms.get(nrOfRoom - 1).setAvailable(true);
+    }
+
+    public void setGuests(int nrOfRoom, List<Guest> guests) {
+        this.rooms.get(nrOfRoom - 1).addGuests(guests);
     }
 }

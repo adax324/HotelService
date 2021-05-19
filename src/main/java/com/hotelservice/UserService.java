@@ -16,6 +16,7 @@ public class UserService {
     public void registerNewUserToRoom(int nrOfRoom){
         if (hotel.getRoomById(nrOfRoom).isAvailable()) {
             hotel.setRoomUnavailAble(nrOfRoom);
+            hotel.setGuests(1,List.of(new Guest("Adam","Hrycek","06-11-1998")));
         }
     }
     public void clearRoom(int nrOfRoom){
