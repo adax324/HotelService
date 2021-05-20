@@ -1,4 +1,4 @@
-package com.hotelservice;
+package com.hotelservice.data;
 
 import java.time.LocalDate;
 import java.time.Period;

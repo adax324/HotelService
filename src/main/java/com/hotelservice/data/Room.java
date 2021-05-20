@@ -1,4 +1,4 @@
-package com.hotelservice;
+package com.hotelservice.data;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -60,6 +60,10 @@ public class Room implements Comparable<Room> {
 
     public int getId() {
         return id;
+    }
+
+    public List<Guest> getGuests() {
+        return guests;
     }
 
     public boolean isAvailable() {

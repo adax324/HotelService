@@ -1,4 +1,4 @@
-package com.hotelservice;
+package com.hotelservice.data;
 
 import java.util.*;
 import java.util.stream.Collectors;
