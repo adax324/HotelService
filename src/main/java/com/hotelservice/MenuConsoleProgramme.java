@@ -15,6 +15,8 @@ public class MenuConsoleProgramme {
                         "2.Wyświetl listę wszystkich dostępnych pokoi\n" +
                         "3.Zrezerwuj pokój\n" +
                         "4.Zwolnij pokój\n"+
+                        "5.Pokoje do posprzątania\n"+
+                        "6.Posprzątaj pokój\n"+
 
                         "0.Wyjdź"
         );
@@ -41,7 +43,25 @@ public class MenuConsoleProgramme {
                 break;
             case 4:
                 System.out.println("Podaj nr pokoju");
-                userService.clearRoom(scanner.nextInt());
+                userService.UnregisterRoom(scanner.nextInt());
+                scanner.nextLine();
+                break;
+            case 5:
+                System.out.println("Pokoje do posprzątanie:");
+                for (Room room:userService.getAllRooms()){
+                    if (!room.isClean()){
+                        System.out.println(room);
+                    }
+                }
+                break;
+            case 6:
+                for (Room room:userService.getAllRooms()){
+                    if (!room.isClean()){
+                        System.out.println(room);
+                    }
+                }
+                System.out.println("Podaj nr pokoju który ma być posprzątany");
+                userService.cleanRoom(scanner.nextInt());
                 scanner.nextLine();
                 break;
             case 0:

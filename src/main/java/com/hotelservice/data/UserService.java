@@ -13,15 +13,27 @@ public class UserService {
         return hotel.getRoomsAvailable();
     }
     public void registerNewUserToRoom(int nrOfRoom,List<Guest> guests){
-        if (hotel.getRoomById(nrOfRoom).isAvailable()) {
+        if (hotel.getRoomById(nrOfRoom).isAvailable()||hotel.getRoomById(nrOfRoom).isClean()) {
             hotel.setRoomUnavailAble(nrOfRoom);
-            hotel.setGuests(1,guests);
+            hotel.setGuests(nrOfRoom,guests);
+        }
+        if (!hotel.getRoomById(nrOfRoom).isClean()){
+            System.out.println("Pokój nieposprzątany nie można zarezerwować");
         }
     }
-    public void clearRoom(int nrOfRoom){
+    public void UnregisterRoom(int nrOfRoom){
         if (!hotel.getRoomById(nrOfRoom).isAvailable()){
             hotel.setRoomAvailAble(nrOfRoom);
+
+            hotel.getRoomById(nrOfRoom).setClean(false);
+            resetGuestsRoom(nrOfRoom);
         }
+    }
+    public void resetGuestsRoom(int nrOfRoom){
+        hotel.unregisterRoom(nrOfRoom);
+    }
+    public void cleanRoom(int nrOfRoom){
+        hotel.cleanRoom(nrOfRoom);
     }
 
 }

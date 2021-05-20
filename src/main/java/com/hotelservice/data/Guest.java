@@ -28,7 +28,7 @@ public class Guest {
         return "Guest{" +
                 "firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", age=" + age +
+                ", age=" + age.getYears() +
                 '}';
     }
 }

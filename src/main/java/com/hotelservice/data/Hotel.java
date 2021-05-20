@@ -9,6 +9,16 @@ public class Hotel {
     public Hotel() {
         generateRooms();
     }
+    public void cleanRoom(int nrOfRoom){
+        rooms.get(nrOfRoom-1).setClean(true);
+
+
+    }
+    public void unregisterRoom(int nrOfRoom){
+        rooms.get(nrOfRoom-1).resetGuests();
+
+    }
+
 
     private void generateRooms() {
         rooms = new ArrayList<>();

@@ -11,6 +11,7 @@ public class Room implements Comparable<Room> {
     private boolean toiletIncluded;
     private boolean isAvailable;
     private List<Guest> guests;
+    private boolean isClean;
 
 
     public Room(int howManyPersons, boolean toiletIncluded, boolean isAvailable) {
@@ -20,6 +21,7 @@ public class Room implements Comparable<Room> {
         this.toiletIncluded = toiletIncluded;
         this.isAvailable = isAvailable;
         this.guests = new ArrayList<>();
+        this.isClean=true;
     }
 
     public void addGuests(List<Guest> guests) {
@@ -33,7 +35,10 @@ public class Room implements Comparable<Room> {
             this.guests = guests;
         }
     }
-
+    public void resetGuests(){
+        this.guests=new ArrayList<>();
+    }
+    //gns
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -74,6 +79,13 @@ public class Room implements Comparable<Room> {
         isAvailable = available;
     }
 
+    public boolean isClean() {
+        return isClean;
+    }
+
+    public void setClean(boolean clean) {
+        isClean = clean;
+    }
 
     @Override
     public int compareTo(Room room) {
