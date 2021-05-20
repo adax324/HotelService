@@ -1,5 +1,6 @@
 package com.hotelservice.data;
 
+import java.time.LocalDate;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -9,14 +10,18 @@ public class Hotel {
     public Hotel() {
         generateRooms();
     }
+
     public void cleanRoom(int nrOfRoom){
         rooms.get(nrOfRoom-1).setClean(true);
-
-
     }
-    public void unregisterRoom(int nrOfRoom){
+    public void unregisterUserFromRoom(int nrOfRoom){
         rooms.get(nrOfRoom-1).resetGuests();
-
+    }
+    public void setRegisterDay(int nrOfRoom,LocalDate registerDay){
+        rooms.get(nrOfRoom-1).setDateOfRegister(registerDay);
+    }
+    public void setUnregisterDay(int nrOfRoom,LocalDate unregisterDay){
+        rooms.get(nrOfRoom-1).setDateOfUnregister(unregisterDay);
     }
 
 

@@ -1,5 +1,6 @@
 package com.hotelservice.data;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -12,6 +13,8 @@ public class Room implements Comparable<Room> {
     private boolean isAvailable;
     private List<Guest> guests;
     private boolean isClean;
+    private LocalDate dateOfRegister;
+    private LocalDate dateOfUnregister;
 
 
     public Room(int howManyPersons, boolean toiletIncluded, boolean isAvailable) {
@@ -61,6 +64,22 @@ public class Room implements Comparable<Room> {
                 "}\n+" +
                 guests;
 
+    }
+
+    public LocalDate getDateOfRegister() {
+        return dateOfRegister;
+    }
+
+    public void setDateOfRegister(LocalDate dateOfRegister) {
+        this.dateOfRegister = dateOfRegister;
+    }
+
+    public LocalDate getDateOfUnregister() {
+        return dateOfUnregister;
+    }
+
+    public void setDateOfUnregister(LocalDate dateOfUnregister) {
+        this.dateOfUnregister = dateOfUnregister;
     }
 
     public int getId() {

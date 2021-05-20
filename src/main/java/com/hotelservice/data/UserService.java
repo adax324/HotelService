@@ -1,5 +1,6 @@
 package com.hotelservice.data;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public class UserService {
@@ -12,10 +13,12 @@ public class UserService {
     public List<Room> getAvailableRooms(){
         return hotel.getRoomsAvailable();
     }
-    public void registerNewUserToRoom(int nrOfRoom,List<Guest> guests){
+    public void registerNewUserToRoom(int nrOfRoom,List<Guest> guests,LocalDate dayOfRegister,LocalDate dayOfUnregister){
         if (hotel.getRoomById(nrOfRoom).isAvailable()||hotel.getRoomById(nrOfRoom).isClean()) {
             hotel.setRoomUnavailAble(nrOfRoom);
             hotel.setGuests(nrOfRoom,guests);
+            hotel.setRegisterDay(nrOfRoom,dayOfRegister);
+            hotel.setUnregisterDay(nrOfRoom,dayOfUnregister);
         }
         if (!hotel.getRoomById(nrOfRoom).isClean()){
             System.out.println("Pokój nieposprzątany nie można zarezerwować");
@@ -30,7 +33,7 @@ public class UserService {
         }
     }
     public void resetGuestsRoom(int nrOfRoom){
-        hotel.unregisterRoom(nrOfRoom);
+        hotel.unregisterUserFromRoom(nrOfRoom);
     }
     public void cleanRoom(int nrOfRoom){
         hotel.cleanRoom(nrOfRoom);
