@@ -1,5 +1,6 @@
 package com.hotelservice;
 
+import com.hotelservice.bin.UserServiceSerialization;
 import com.hotelservice.data.Guest;
 import com.hotelservice.data.Room;
 import com.hotelservice.data.UserService;
@@ -65,6 +66,7 @@ public class MenuConsoleProgramme {
                 break;
 
             case 0:
+                UserServiceSerialization.saveUserService(userService);
                 System.exit(1);
         }
     }

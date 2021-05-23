@@ -1,5 +1,6 @@
 package com.hotelservice;
 
+import com.hotelservice.bin.UserServiceSerialization;
 import com.hotelservice.data.UserService;
 
 import static com.hotelservice.MenuConsoleProgramme.menu1;
@@ -10,7 +11,7 @@ import static com.hotelservice.MenuConsoleProgramme.menu1;
  */
 public class Main
 {
-    private static UserService userService=new UserService();
+    private static UserService userService= UserServiceSerialization.loadUserService();
     public static void main( String[] args )
     {
         ConsoleProgramStart();

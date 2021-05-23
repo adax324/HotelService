@@ -1,11 +1,11 @@
 package com.hotelservice.data;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
-public class Room  {
+public class Room implements Serializable {
     private static int numbersOfRoom = 0;
     private final int id;
     private final int howManyPersons;

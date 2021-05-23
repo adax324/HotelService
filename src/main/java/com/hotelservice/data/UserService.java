@@ -1,9 +1,10 @@
 package com.hotelservice.data;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
 
-public class UserService {
+public class UserService implements Serializable {
     private Hotel hotel=new Hotel();
 
 

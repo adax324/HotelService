@@ -1,14 +1,15 @@
 package com.hotelservice.data;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
 
-public class Guest {
+public class Guest implements Serializable {
     private String firstName;
     private String lastName;
     private LocalDate birthDay;
-    private DateTimeFormatter dateTimeFormatter;
+    private transient DateTimeFormatter dateTimeFormatter;
     private Period age;
 
     public Guest(String firstName, String lastName, LocalDate birthDay) {

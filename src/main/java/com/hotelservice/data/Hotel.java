@@ -1,10 +1,11 @@
 package com.hotelservice.data;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class Hotel {
+public class Hotel implements Serializable {
     private List<Room> rooms;
 
     public Hotel() {
