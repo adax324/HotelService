@@ -8,7 +8,7 @@ import static com.hotelservice.MenuConsoleProgramme.menu1;
  * Hello world!
  *
  */
-public class App 
+public class Main
 {
     private static UserService userService=new UserService();
     public static void main( String[] args )
