@@ -57,12 +57,18 @@ public class Room  {
 
     @Override
     public String toString() {
-        return "Room{" + "nr of room: " + id +
+
+
+            String toString= "Room{" + "nr of room: " + id +
                 " howManyPersons=" + howManyPersons +
                 ", toiletIncluded=" + toiletIncluded +
                 ", isAvailable=" + isAvailable +
-                "}+" +
-                guests;
+                ", is Cleaned"+isClean+
+                "}";
+            if (!guests.isEmpty()){
+                toString+=" "+guests;
+            }
+            return toString;
 
     }
 

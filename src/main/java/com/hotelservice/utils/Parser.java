@@ -34,7 +34,7 @@ public class Parser {
                 localDate=LocalDate.parse(SCANNER.nextLine(),DateTimeFormatter.ofPattern("dd-MM-yyyy"));
                 isVaild=true;
             }catch (DateTimeException e){
-                e.printStackTrace();
+                System.err.println("Błąd wprowadź datę ponownie");
                 isVaild=false;
             }
         }while (!isVaild);

@@ -38,17 +38,14 @@ public class MenuConsoleProgramme {
                 });
                 break;
             case 3:
-                for (Room room : userService.getAllRooms()) {
-                    if (!room.isAvailable()) {
-                        System.out.println(room + " " + room.getDateOfUnregister());
-                    }
-                }
+                printOccupiedRooms(userService);
                 break;
             case 4:
                 consoleRegisterNewRoom(userService);
                 break;
             case 5:
                 System.out.println("Podaj nr pokoju");
+                printOccupiedRooms(userService);
                 userService.UnregisterRoom(Parser.scannerParserStringToInt());
                 break;
             case 6:
@@ -74,6 +71,14 @@ public class MenuConsoleProgramme {
         }
     }
 
+    private static void printOccupiedRooms(UserService userService) {
+        for (Room room : userService.getAllRooms()) {
+            if (!room.isAvailable()) {
+                System.out.println(room + "Date of Unregister: " + room.getDateOfUnregister());
+            }
+        }
+    }
+
     private static void consoleRegisterNewRoom(UserService userService) {
         Deque<Guest> adder = new LinkedList<>();
         System.out.println("Wprowadź listę lokatorów");
@@ -81,7 +86,7 @@ public class MenuConsoleProgramme {
         function:
         while (true) {
             System.out.println("Obecni lokatorzy:" + adder.toString());
-            System.out.println("1:Dodaj\n2.Usun ostatni\n3.gotowe\n4.Anuluj ");
+            System.out.println("1:Dodaj\n2.Usuń ostatni\n3.Gotowe\n4.Anuluj ");
 
             int choice = Parser.scannerParserStringToInt();
             switch (choice) {
