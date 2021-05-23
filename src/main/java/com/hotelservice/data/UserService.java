@@ -15,8 +15,19 @@ public class UserService {
     }
     public void registerNewUserToRoom(int nrOfRoom,List<Guest> guests,LocalDate dayOfRegister,LocalDate dayOfUnregister){
         if (hotel.getRoomById(nrOfRoom).isAvailable()||hotel.getRoomById(nrOfRoom).isClean()) {
-            hotel.setRoomUnavailAble(nrOfRoom);
+            if(nrOfRoom>20){
+                System.out.println("Nie ma takiego pokoju");
+                return;
+            }
             hotel.setGuests(nrOfRoom,guests);
+            if (hotel.isRoomEmpty(nrOfRoom)){
+                return;
+            }
+            if (dayOfRegister.isAfter(dayOfUnregister)){
+                System.out.println("Data rejestracji nie może być większa niż data wyrejestrowania");
+                return;
+            }
+            hotel.setRoomUnavailAble(nrOfRoom);
             hotel.setRegisterDay(nrOfRoom,dayOfRegister);
             hotel.setUnregisterDay(nrOfRoom,dayOfUnregister);
         }
@@ -25,18 +36,25 @@ public class UserService {
         }
     }
     public void UnregisterRoom(int nrOfRoom){
-        if (!hotel.getRoomById(nrOfRoom).isAvailable()){
+        if (nrOfRoom<=hotel.getRooms().size()&&!hotel.getRoomById(nrOfRoom).isAvailable()){
             hotel.setRoomAvailAble(nrOfRoom);
 
             hotel.getRoomById(nrOfRoom).setClean(false);
             resetGuestsRoom(nrOfRoom);
+        }else{
+            System.err.println("Nie ma takiego pokoju");
         }
+
     }
     public void resetGuestsRoom(int nrOfRoom){
         hotel.unregisterUserFromRoom(nrOfRoom);
     }
     public void cleanRoom(int nrOfRoom){
-        hotel.cleanRoom(nrOfRoom);
+        if (nrOfRoom<=hotel.getRooms().size()){
+            hotel.cleanRoom(nrOfRoom);
+        } else {
+            System.err.println("Nie ma takiego pokoju");
+        }
     }
 
 }

@@ -5,11 +5,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class Room implements Comparable<Room> {
+public class Room  {
     private static int numbersOfRoom = 0;
-    private int id;
-    private int howManyPersons;
-    private boolean toiletIncluded;
+    private final int id;
+    private final int howManyPersons;
+    private final boolean toiletIncluded;
     private boolean isAvailable;
     private List<Guest> guests;
     private boolean isClean;
@@ -57,18 +57,15 @@ public class Room implements Comparable<Room> {
 
     @Override
     public String toString() {
-        return "Room{" + "nr of room:" + id +
-                "howManyPersons=" + howManyPersons +
+        return "Room{" + "nr of room: " + id +
+                " howManyPersons=" + howManyPersons +
                 ", toiletIncluded=" + toiletIncluded +
                 ", isAvailable=" + isAvailable +
-                "}\n+" +
+                "}+" +
                 guests;
 
     }
 
-    public LocalDate getDateOfRegister() {
-        return dateOfRegister;
-    }
 
     public void setDateOfRegister(LocalDate dateOfRegister) {
         this.dateOfRegister = dateOfRegister;
@@ -106,8 +103,5 @@ public class Room implements Comparable<Room> {
         isClean = clean;
     }
 
-    @Override
-    public int compareTo(Room room) {
-        return Integer.compare(this.getId(), room.getId());
-    }
+
 }

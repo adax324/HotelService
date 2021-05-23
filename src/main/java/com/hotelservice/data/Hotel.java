@@ -11,23 +11,26 @@ public class Hotel {
         generateRooms();
     }
 
-    public void cleanRoom(int nrOfRoom){
-        rooms.get(nrOfRoom-1).setClean(true);
+    public void cleanRoom(int nrOfRoom) {
+        rooms.get(nrOfRoom - 1).setClean(true);
     }
-    public void unregisterUserFromRoom(int nrOfRoom){
-        rooms.get(nrOfRoom-1).resetGuests();
+
+    public void unregisterUserFromRoom(int nrOfRoom) {
+        rooms.get(nrOfRoom - 1).resetGuests();
     }
-    public void setRegisterDay(int nrOfRoom,LocalDate registerDay){
-        rooms.get(nrOfRoom-1).setDateOfRegister(registerDay);
+
+    public void setRegisterDay(int nrOfRoom, LocalDate registerDay) {
+        rooms.get(nrOfRoom - 1).setDateOfRegister(registerDay);
     }
-    public void setUnregisterDay(int nrOfRoom,LocalDate unregisterDay){
-        rooms.get(nrOfRoom-1).setDateOfUnregister(unregisterDay);
+
+    public void setUnregisterDay(int nrOfRoom, LocalDate unregisterDay) {
+        rooms.get(nrOfRoom - 1).setDateOfUnregister(unregisterDay);
     }
 
 
     private void generateRooms() {
         rooms = new ArrayList<>();
-        for (int i = 0, j = 1; i < 50; i++, j++) {
+        for (int i = 0, j = 1; i < 20; i++, j++) {
             if (j == 6) {
                 j = 1;
             }
@@ -64,6 +67,20 @@ public class Hotel {
     }
 
     public void setGuests(int nrOfRoom, List<Guest> guests) {
-        this.rooms.get(nrOfRoom - 1).addGuests(guests);
+        boolean thereIsAdult = false;
+        for (Guest guest : guests) {
+            if (guest.getAge() >= 18) {
+                thereIsAdult = true;
+            }
+        }
+        if (thereIsAdult) {
+            this.rooms.get(nrOfRoom - 1).addGuests(guests);
+        } else {
+            System.err.println("Nie ma osoby pełnoletniej błąd 666");
+        }
+    }
+
+    public boolean isRoomEmpty(int nrOfRoom) {
+        return rooms.get(nrOfRoom - 1).getGuests().isEmpty();
     }
 }

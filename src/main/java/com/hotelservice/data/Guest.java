@@ -11,11 +11,11 @@ public class Guest {
     private DateTimeFormatter dateTimeFormatter;
     private Period age;
 
-    public Guest(String firstName, String lastName, String birthDay) {
+    public Guest(String firstName, String lastName, LocalDate birthDay) {
         this.firstName = firstName;
         this.lastName = lastName;
         dateTimeFormatter=DateTimeFormatter.ofPattern("dd-MM-yyyy");
-        this.birthDay = LocalDate.parse(birthDay,dateTimeFormatter);
+        this.birthDay = birthDay;
         this.age=Period.between(this.birthDay,LocalDate.now());
     }
 
