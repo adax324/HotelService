@@ -5,7 +5,7 @@ import com.hotelservice.userservice.UserService;
 
 import static com.hotelservice.MenuConsoleProgramme.menu1;
 
-
+//
 public class Main {
     private static UserService userService = UserServiceSerialization.loadUserService();
 
