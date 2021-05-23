@@ -1,7 +1,7 @@
 package com.hotelservice;
 
 import com.hotelservice.bin.UserServiceSerialization;
-import com.hotelservice.data.UserService;
+import com.hotelservice.userservice.UserService;
 
 import static com.hotelservice.MenuConsoleProgramme.menu1;
 

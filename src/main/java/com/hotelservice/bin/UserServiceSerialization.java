@@ -1,6 +1,6 @@
 package com.hotelservice.bin;
 
-import com.hotelservice.data.UserService;
+import com.hotelservice.userservice.UserService;
 import com.hotelservice.utils.UserServiceNotLoaded;
 
 import java.io.*;

@@ -1,4 +1,4 @@
-package com.hotelservice.data;
+package com.hotelservice.userservice;
 
 import java.io.Serializable;
 import java.time.LocalDate;

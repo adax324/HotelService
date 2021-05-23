@@ -1,9 +1,9 @@
 package com.hotelservice;
 
 import com.hotelservice.bin.UserServiceSerialization;
-import com.hotelservice.data.Guest;
-import com.hotelservice.data.Room;
-import com.hotelservice.data.UserService;
+import com.hotelservice.userservice.Guest;
+import com.hotelservice.userservice.Room;
+import com.hotelservice.userservice.UserService;
 import com.hotelservice.utils.Parser;
 
 import java.time.LocalDate;
