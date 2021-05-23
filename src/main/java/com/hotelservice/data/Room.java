@@ -24,7 +24,7 @@ public class Room implements Serializable {
         this.toiletIncluded = toiletIncluded;
         this.isAvailable = isAvailable;
         this.guests = new ArrayList<>();
-        this.isClean=true;
+        this.isClean = true;
     }
 
     public void addGuests(List<Guest> guests) {
@@ -38,25 +38,25 @@ public class Room implements Serializable {
             this.guests = guests;
         }
     }
-    public void resetGuests(){
-        this.guests=new ArrayList<>();
+
+    public void resetGuests() {
+        this.guests = new ArrayList<>();
     }
-    //gns
 
     @Override
     public String toString() {
 
 
-            String toString= "Room{" + "nr of room: " + id +
+        String toString = "Room{" + "nr of room: " + id +
                 " howManyPersons=" + howManyPersons +
                 ", toiletIncluded=" + toiletIncluded +
                 ", isAvailable=" + isAvailable +
-                ", is Cleaned= "+isClean+
+                ", is Cleaned= " + isClean +
                 "}";
-            if (!guests.isEmpty()){
-                toString+=" "+guests;
-            }
-            return toString;
+        if (!guests.isEmpty()) {
+            toString += " " + guests;
+        }
+        return toString;
 
     }
 

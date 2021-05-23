@@ -28,13 +28,10 @@ public class MenuConsoleProgramme {
 
         switch (choice) {
             case 1:
-                for (Room room :
-                        userService.getAllRooms()) {
-                    System.out.println(room);
-                }
+                getAllRooms(userService);
                 break;
             case 2:
-                printAllRooms(userService);
+                printAvailableRooms(userService);
                 break;
             case 3:
                 printOccupiedRooms(userService);
@@ -71,7 +68,14 @@ public class MenuConsoleProgramme {
         }
     }
 
-    private static void printAllRooms(UserService userService) {
+    private static void getAllRooms(UserService userService) {
+        for (Room room :
+                userService.getAllRooms()) {
+            System.out.println(room);
+        }
+    }
+
+    private static void printAvailableRooms(UserService userService) {
         userService.getAvailableRooms().forEach(room -> {
             System.out.println("Rooms available: " + room.toString());
         });
@@ -106,8 +110,9 @@ public class MenuConsoleProgramme {
                     adder.addFirst(new Guest(firstname, lastname, Parser.scannerParserStringToDate()));
                     break;
                 case 2:
-                    if (!adder.isEmpty()){
-                    adder.removeFirst();}
+                    if (!adder.isEmpty()) {
+                        adder.removeFirst();
+                    }
                     break;
                 case 3:
                     if (adder.isEmpty()) {
@@ -126,15 +131,15 @@ public class MenuConsoleProgramme {
         LocalDate dateofregister = Parser.scannerParserStringToDate();
         System.out.println("Podaj date wymeldowania");
         LocalDate dateofunregister = Parser.scannerParserStringToDate();
-        printAllRooms(userService);
+        getAllRooms(userService);
         System.out.println("Podaj nr pokoju");
         int nr = Parser.scannerParserStringToInt();
         List<Guest> guests = new ArrayList<>(adder);
-        if(adder.size()>userService.getRoomById(nr).getHowManyPersons()){
+        if (adder.size() > userService.getRoomById(nr).getHowManyPersons()) {
             System.err.println("Nieprawidłowy rozmiar pokoju");
             return;
         }
 
-            userService.registerNewUserToRoom(nr, guests, dateofregister, dateofunregister);
+        userService.registerNewUserToRoom(nr, guests, dateofregister, dateofunregister);
     }
 }

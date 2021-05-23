@@ -15,9 +15,9 @@ public class Guest implements Serializable {
     public Guest(String firstName, String lastName, LocalDate birthDay) {
         this.firstName = firstName;
         this.lastName = lastName;
-        dateTimeFormatter=DateTimeFormatter.ofPattern("dd-MM-yyyy");
+        dateTimeFormatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         this.birthDay = birthDay;
-        this.age=Period.between(this.birthDay,LocalDate.now());
+        this.age = Period.between(this.birthDay, LocalDate.now());
     }
 
     public int getAge() {

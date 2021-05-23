@@ -7,37 +7,39 @@ import java.util.Scanner;
 
 public class Parser {
     private static final Scanner SCANNER = new Scanner(System.in);
+
     public static int scannerParserStringToInt() {
         String stringScanner;
         boolean isVaild;
-        int converted=0;
-         do {
+        int converted = 0;
+        do {
 
             try {
-                stringScanner= SCANNER.nextLine();
+                stringScanner = SCANNER.nextLine();
                 converted = Integer.parseInt(stringScanner);
-                isVaild=true;
+                isVaild = true;
             } catch (NumberFormatException e) {
                 System.out.println("Błąd spróbuj ponownie");
 
-                isVaild=false;
+                isVaild = false;
             }
-        }while (!isVaild);
+        } while (!isVaild);
         return converted; //null oznacza błąd
     }
+
     //format dd-MM-yyyy
-    public static LocalDate scannerParserStringToDate(){
-        LocalDate localDate=null;
+    public static LocalDate scannerParserStringToDate() {
+        LocalDate localDate = null;
         boolean isVaild;
         do {
             try {
-                localDate=LocalDate.parse(SCANNER.nextLine(),DateTimeFormatter.ofPattern("dd-MM-yyyy"));
-                isVaild=true;
-            }catch (DateTimeException e){
+                localDate = LocalDate.parse(SCANNER.nextLine(), DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+                isVaild = true;
+            } catch (DateTimeException e) {
                 System.err.println("Błąd wprowadź datę ponownie");
-                isVaild=false;
+                isVaild = false;
             }
-        }while (!isVaild);
+        } while (!isVaild);
         return localDate;
 
 
