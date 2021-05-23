@@ -42,18 +42,6 @@ public class Room  {
         this.guests=new ArrayList<>();
     }
     //gns
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Room room = (Room) o;
-        return id == room.id && howManyPersons == room.howManyPersons && toiletIncluded == room.toiletIncluded && isAvailable == room.isAvailable;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, howManyPersons, toiletIncluded, isAvailable);
-    }
 
     @Override
     public String toString() {
@@ -63,7 +51,7 @@ public class Room  {
                 " howManyPersons=" + howManyPersons +
                 ", toiletIncluded=" + toiletIncluded +
                 ", isAvailable=" + isAvailable +
-                ", is Cleaned"+isClean+
+                ", is Cleaned= "+isClean+
                 "}";
             if (!guests.isEmpty()){
                 toString+=" "+guests;
@@ -72,6 +60,9 @@ public class Room  {
 
     }
 
+    public int getHowManyPersons() {
+        return howManyPersons;
+    }
 
     public void setDateOfRegister(LocalDate dateOfRegister) {
         this.dateOfRegister = dateOfRegister;
@@ -83,10 +74,6 @@ public class Room  {
 
     public void setDateOfUnregister(LocalDate dateOfUnregister) {
         this.dateOfUnregister = dateOfUnregister;
-    }
-
-    public int getId() {
-        return id;
     }
 
     public List<Guest> getGuests() {

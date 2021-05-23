@@ -33,9 +33,7 @@ public class MenuConsoleProgramme {
                 }
                 break;
             case 2:
-                userService.getAvailableRooms().forEach(room -> {
-                    System.out.println("Rooms available: " + room.toString());
-                });
+                printAllRooms(userService);
                 break;
             case 3:
                 printOccupiedRooms(userService);
@@ -69,6 +67,12 @@ public class MenuConsoleProgramme {
             case 0:
                 System.exit(1);
         }
+    }
+
+    private static void printAllRooms(UserService userService) {
+        userService.getAvailableRooms().forEach(room -> {
+            System.out.println("Rooms available: " + room.toString());
+        });
     }
 
     private static void printOccupiedRooms(UserService userService) {
@@ -120,10 +124,15 @@ public class MenuConsoleProgramme {
         LocalDate dateofregister = Parser.scannerParserStringToDate();
         System.out.println("Podaj date wymeldowania");
         LocalDate dateofunregister = Parser.scannerParserStringToDate();
+        printAllRooms(userService);
         System.out.println("Podaj nr pokoju");
         int nr = Parser.scannerParserStringToInt();
         List<Guest> guests = new ArrayList<>(adder);
+        if(adder.size()>userService.getRoomById(nr).getHowManyPersons()){
+            System.err.println("Nieprawidłowy rozmiar pokoju");
+            return;
+        }
 
-        userService.registerNewUserToRoom(nr, guests, dateofregister, dateofunregister);
+            userService.registerNewUserToRoom(nr, guests, dateofregister, dateofunregister);
     }
 }

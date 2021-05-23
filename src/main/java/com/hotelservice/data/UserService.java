@@ -10,6 +10,9 @@ public class UserService {
     public List<Room> getAllRooms(){
         return hotel.getRooms();
     }
+    public Room getRoomById(int id){
+        return hotel.getRoomById(id-1);
+    }
     public List<Room> getAvailableRooms(){
         return hotel.getRoomsAvailable();
     }
